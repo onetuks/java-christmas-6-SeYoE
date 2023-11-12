@@ -3,6 +3,7 @@ package christmas.event.handler;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.order.Order;
+import christmas.order.OrderHistory;
 import christmas.order.VisitDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -21,10 +22,10 @@ class WeekEndDayEventHandlerTest {
     @DisplayName("총 주문 금액이 만 원이 넘지 않은 주문으로는 이벤트 적용되지 않는다.")
     void supportMinimumPrice_LessThanMinimumPrice_False() {
         // Given
-        final Order order = new Order("양송이수프-1");
+        final OrderHistory orderHistory = new OrderHistory("양송이수프-1");
 
         // When
-        final boolean result = eventHandler.supportMinimumPrice(order);
+        final boolean result = eventHandler.supportMinimumPrice(orderHistory);
 
         // Then
         assertThat(result).isFalse();
@@ -34,10 +35,10 @@ class WeekEndDayEventHandlerTest {
     @DisplayName("총주문 금액이 만 원 이상인 주문은 이벤트 적용된다.")
     void supportMinimumPrice_GreaterThanMinimumPrice_True() {
         // Given
-        final Order order = new Order("티본스테이크-3, 초코케이크-1");
+        final OrderHistory orderHistory = new OrderHistory("티본스테이크-3, 초코케이크-1");
 
         // When
-        final boolean result = eventHandler.supportMinimumPrice(order);
+        final boolean result = eventHandler.supportMinimumPrice(orderHistory);
 
         // Then
         assertThat(result).isTrue();
@@ -74,10 +75,12 @@ class WeekEndDayEventHandlerTest {
     void supports_BeforeChristmasAndGreaterThanMinimumPrice_True() {
         // Given
         final VisitDate visitDate = new VisitDate("2");
-        final Order order = new Order("티본스테이크-3, 초코케이크-1");
+        final OrderHistory orderHistory = new OrderHistory("티본스테이크-3, 초코케이크-1");
+
+        final Order order = new Order(visitDate, orderHistory);
 
         // When
-        final boolean result = eventHandler.supports(order, visitDate);
+        final boolean result = eventHandler.supports(order);
 
         // Then
         assertThat(result).isTrue();
@@ -89,10 +92,12 @@ class WeekEndDayEventHandlerTest {
     void apply_MainMenuNotInOrder_NotDiscount() {
         // Given
         final VisitDate visitDate = new VisitDate("4");
-        final Order order = new Order("아이스크림-10");
+        final OrderHistory orderHistory = new OrderHistory("아이스크림-10");
+
+        final Order order = new Order(visitDate, orderHistory);
 
         // When
-        final int result = eventHandler.apply(order, visitDate);
+        final int result = eventHandler.apply(order);
 
         // Then
         assertThat(result).isZero();
@@ -103,10 +108,12 @@ class WeekEndDayEventHandlerTest {
     void apply_MainMenuInOrder_Discount() {
         // Given
         final VisitDate visitDate = new VisitDate("4");
-        final Order order = new Order("티본스테이크-3, 초코케이크-1");
+        final OrderHistory orderHistory = new OrderHistory("티본스테이크-3, 초코케이크-1");
+
+        final Order order = new Order(visitDate, orderHistory);
 
         // When
-        final int result = eventHandler.apply(order, visitDate);
+        final int result = eventHandler.apply(order);
 
         // Then
         assertThat(result).isEqualTo(-2_023 * 3);

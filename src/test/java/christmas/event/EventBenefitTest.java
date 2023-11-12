@@ -1,9 +1,10 @@
 package christmas.event;
 
-import static christmas.order.Menu.CHAMPAGNE;
+import static christmas.order.vo.Menu.CHAMPAGNE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.order.Order;
+import christmas.order.OrderHistory;
 import christmas.order.VisitDate;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,9 +16,10 @@ class EventBenefitTest {
     void getGiveAwayMenu_GreaterThan120K_GiveOneChampagne() {
         // Given
         final VisitDate visitDate = new VisitDate("4");
-        final Order order = new Order("티본스테이크-10");
+        final OrderHistory orderHistory = new OrderHistory("티본스테이크-10");
+        final Order order = new Order(visitDate, orderHistory);
 
-        final EventBenefit eventBenefit = new EventBenefit(order, visitDate);
+        final EventBenefit eventBenefit = new EventBenefit(order);
 
         // When
         final String result = eventBenefit.getGiveAwayMenu();
@@ -31,9 +33,10 @@ class EventBenefitTest {
     void getGiveAwayMenu_LessThan120K_GiveOneChampagne() {
         // Given
         final VisitDate visitDate = new VisitDate("4");
-        final Order order = new Order("티본스테이크-1");
+        final OrderHistory orderHistory = new OrderHistory("티본스테이크-1");
+        final Order order = new Order(visitDate, orderHistory);
 
-        final EventBenefit eventBenefit = new EventBenefit(order, visitDate);
+        final EventBenefit eventBenefit = new EventBenefit(order);
 
         // When
         final String result = eventBenefit.getGiveAwayMenu();
@@ -47,9 +50,10 @@ class EventBenefitTest {
     void getTotalBenefitPrice_ReturnBenefitPrice() {
         // Given
         final VisitDate visitDate = new VisitDate("25");
-        final Order order = new Order("티본스테이크-1, 초코케이크-3, 제로콜라-2");
+        final OrderHistory orderHistory = new OrderHistory("티본스테이크-1, 초코케이크-3, 제로콜라-2");
+        final Order order = new Order(visitDate, orderHistory);
 
-        final EventBenefit eventBenefit = new EventBenefit(order, visitDate);
+        final EventBenefit eventBenefit = new EventBenefit(order);
 
         // When
         final int result = eventBenefit.getTotalBenefitPrice();

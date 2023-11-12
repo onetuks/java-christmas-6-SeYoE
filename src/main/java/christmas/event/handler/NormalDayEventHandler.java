@@ -1,9 +1,10 @@
 package christmas.event.handler;
 
-import static christmas.order.MenuType.DESERT;
+import static christmas.order.vo.MenuType.DESERT;
 
 import christmas.event.EventHandler;
 import christmas.order.Order;
+import christmas.order.OrderHistory;
 import christmas.order.VisitDate;
 import java.util.List;
 
@@ -22,13 +23,16 @@ public class NormalDayEventHandler implements EventHandler {
     );
 
     @Override
-    public boolean supports(final Order order, final VisitDate visitDate) {
-        return supportMinimumPrice(order) && supportVisitDate(visitDate);
+    public boolean supports(final Order order) {
+        final boolean validVisitDate = supportVisitDate(order.visitDate());
+        final boolean validPriceLimit = supportMinimumPrice(order.orderHistory());
+
+        return validVisitDate && validPriceLimit;
     }
 
     @Override
-    public boolean supportMinimumPrice(final Order order) {
-        return order.getTotalPrice() >= MINIMUM_PRICE;
+    public boolean supportMinimumPrice(final OrderHistory orderHistory) {
+        return orderHistory.getTotalPrice() >= MINIMUM_PRICE;
     }
 
     @Override
@@ -37,8 +41,9 @@ public class NormalDayEventHandler implements EventHandler {
     }
 
     @Override
-    public int apply(final Order order, final VisitDate visitDate) {
-        return -order.getOrderHistory()
+    public int apply(final Order order) {
+        return -order.orderHistory()
+                .getHistory()
                 .entrySet()
                 .stream()
                 .filter(entry -> entry.getKey().getMenuType() == DESERT)

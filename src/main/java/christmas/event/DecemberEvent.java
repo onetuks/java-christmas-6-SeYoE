@@ -6,7 +6,6 @@ import christmas.event.handler.NormalDayEventHandler;
 import christmas.event.handler.StarDayEventHandler;
 import christmas.event.handler.WeekEndDayEventHandler;
 import christmas.order.Order;
-import christmas.order.VisitDate;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -21,24 +20,28 @@ public enum DecemberEvent {
     private final String eventName;
     private final EventHandler eventHandler;
 
-    DecemberEvent(String eventName, EventHandler eventHandler) {
+    DecemberEvent(final String eventName, final EventHandler eventHandler) {
         this.eventName = eventName;
         this.eventHandler = eventHandler;
     }
 
-    public static Map<DecemberEvent, Integer> applyEvents(final Order order, final VisitDate visitDate) {
+    public static Map<DecemberEvent, Integer> applyEvents(final Order order) {
         return Arrays.stream(DecemberEvent.values())
                 .filter(decemberEvent -> decemberEvent.eventHandler
-                        .supports(order, visitDate))
+                        .supports(order))
                 .collect(Collectors.toMap(
                         decemberEvent -> decemberEvent,
-                        decemberEvent -> decemberEvent.eventHandler
-                                .apply(order, visitDate)
+                        decemberEvent -> applyEvent(order, decemberEvent)
                 ));
     }
 
     public String getEventName() {
         return eventName;
     }
+
+    private static int applyEvent(final Order order, final DecemberEvent decemberEvent) {
+        return decemberEvent.eventHandler.apply(order);
+    }
+
 }
 

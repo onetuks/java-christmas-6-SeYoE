@@ -1,10 +1,11 @@
 package christmas.order;
 
 import static christmas.error.ErrorMessage.INVALID_MENU_ORDER;
-import static christmas.order.Menu.CHOCO_CAKE;
+import static christmas.order.vo.Menu.CHOCO_CAKE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import christmas.order.vo.Menu;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

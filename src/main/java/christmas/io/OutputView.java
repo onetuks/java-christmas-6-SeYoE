@@ -1,7 +1,7 @@
 package christmas.io;
 
 import christmas.event.EventBenefit;
-import christmas.order.Order;
+import christmas.order.OrderHistory;
 import christmas.order.VisitDate;
 import christmas.result.EventResult;
 import java.text.DecimalFormat;
@@ -34,10 +34,10 @@ public class OutputView {
         System.out.println(message);
     }
 
-    public void outputOrderMenu(final Order order) {
+    public void outputOrderMenu(final OrderHistory orderHistory) {
         System.out.println(ORDER_MENU_TITLE);
 
-        order.getOrderHistory()
+        orderHistory.getHistory()
                 .forEach((menu, orderAmount) -> {
                     final String menuName = menu.getMenuName();
                     final int amount = orderAmount.getAmount();
@@ -47,10 +47,10 @@ public class OutputView {
                 });
     }
 
-    public void outputTotalPrice(final Order order) {
+    public void outputTotalPrice(final OrderHistory orderHistory) {
         System.out.println(TOTAL_PRICE_TITLE);
 
-        final String totalPrice = decimalFormat.format(order.getTotalPrice());
+        final String totalPrice = decimalFormat.format(orderHistory.getTotalPrice());
 
         System.out.println(totalPrice);
     }
@@ -64,6 +64,10 @@ public class OutputView {
     public void outputEventBenefitPrices(final EventBenefit eventBenefit) {
         System.out.println(BENEFIT_DETAILS_TITLE);
 
+        if (eventBenefit.isEmpty()) {
+            System.out.println(NONE);
+        }
+
         eventBenefit.getBenefits()
                 .forEach((key, value) -> {
                     final String eventName = key.getEventName();
@@ -73,10 +77,6 @@ public class OutputView {
 
                     System.out.println(format);
                 });
-
-        if (eventBenefit.isEmpty()) {
-            System.out.println(NONE);
-        }
     }
 
     public void outputTotalBenefitPrice(final EventBenefit eventBenefit) {
@@ -98,7 +98,7 @@ public class OutputView {
     public void outputEventBadge(final EventResult eventResult) {
         System.out.println(EVENT_BADGE_TITLE);
 
-        String eventBadgeName = eventResult.getEventBadgeName();
+        final String eventBadgeName = eventResult.getEventBadgeName();
 
         System.out.println(eventBadgeName);
     }

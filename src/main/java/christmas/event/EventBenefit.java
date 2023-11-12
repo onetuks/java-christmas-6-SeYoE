@@ -1,10 +1,9 @@
 package christmas.event;
 
 import static christmas.event.DecemberEvent.GIVE_AWAY_EVENT;
-import static christmas.order.Menu.CHAMPAGNE;
+import static christmas.order.vo.Menu.CHAMPAGNE;
 
 import christmas.order.Order;
-import christmas.order.VisitDate;
 import java.text.MessageFormat;
 import java.util.Map;
 
@@ -15,8 +14,8 @@ public class EventBenefit {
 
     private final Map<DecemberEvent, Integer> benefits;
 
-    public EventBenefit(final Order order, final VisitDate visitDate) {
-        this.benefits = DecemberEvent.applyEvents(order, visitDate);
+    public EventBenefit(final Order order) {
+        this.benefits = DecemberEvent.applyEvents(order);
     }
 
     public String getGiveAwayMenu() {
@@ -40,4 +39,5 @@ public class EventBenefit {
     public Map<DecemberEvent, Integer> getBenefits() {
         return benefits;
     }
+
 }

@@ -1,7 +1,7 @@
 package christmas.io;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.order.Order;
+import christmas.order.OrderHistory;
 import christmas.order.VisitDate;
 
 public class InputView {
@@ -15,6 +15,7 @@ public class InputView {
 
             try {
                 final String inputDate = Console.readLine();
+
                 return new VisitDate(inputDate);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -22,14 +23,14 @@ public class InputView {
         }
     }
 
-    public Order inputMenuOrder() {
+    public OrderHistory inputMenuOrder() {
         while (true) {
             System.out.println(MENU_COUNT_QUERY);
 
             try {
                 final String inputMenuLine = Console.readLine();
 
-                return new Order(inputMenuLine);
+                return new OrderHistory(inputMenuLine);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }

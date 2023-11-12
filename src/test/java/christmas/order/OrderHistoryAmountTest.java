@@ -4,10 +4,11 @@ import static christmas.error.ErrorMessage.INVALID_MENU_ORDER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import christmas.order.vo.OrderAmount;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class OrderAmountTest {
+class OrderHistoryAmountTest {
 
     @Test
     @DisplayName("숫자가 아닌 값으로 수량 생성 실패한다.")

@@ -1,9 +1,10 @@
 package christmas.event.handler;
 
-import static christmas.order.Menu.CHAMPAGNE;
+import static christmas.order.vo.Menu.CHAMPAGNE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.order.Order;
+import christmas.order.OrderHistory;
 import christmas.order.VisitDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -22,10 +23,10 @@ class GiveAwayEventHandlerTest {
     @DisplayName("총 주문 금액이 12만 원이 넘지 않은 주문으로는 이벤트 적용되지 않는다.")
     void supportMinimumPrice_LessThanMinimumPrice_False() {
         // Given
-        final Order order = new Order("아이스크림-1");
+        final OrderHistory orderHistory = new OrderHistory("아이스크림-1");
 
         // When
-        final boolean result = eventHandler.supportMinimumPrice(order);
+        final boolean result = eventHandler.supportMinimumPrice(orderHistory);
 
         // Then
         assertThat(result).isFalse();
@@ -35,10 +36,10 @@ class GiveAwayEventHandlerTest {
     @DisplayName("총주문 금액이 12만 원 이상인 주문은 이벤트 적용된다.")
     void supportMinimumPrice_GreaterThanMinimumPrice_True() {
         // Given
-        final Order order = new Order("아이스크림-3, 티본스테이크-10");
+        final OrderHistory orderHistory = new OrderHistory("아이스크림-3, 티본스테이크-10");
 
         // When
-        final boolean result = eventHandler.supportMinimumPrice(order);
+        final boolean result = eventHandler.supportMinimumPrice(orderHistory);
 
         // Then
         assertThat(result).isTrue();
@@ -62,10 +63,12 @@ class GiveAwayEventHandlerTest {
     void supports_BeforeChristmasAndGreaterThanMinimumPrice_True() {
         // Given
         final VisitDate visitDate = new VisitDate("4");
-        final Order order = new Order("아이스크림-3, 티본스테이크-10");
+        final OrderHistory orderHistory = new OrderHistory("아이스크림-3, 티본스테이크-10");
+
+        final Order order = new Order(visitDate, orderHistory);
 
         // When
-        final boolean result = eventHandler.supports(order, visitDate);
+        final boolean result = eventHandler.supports(order);
 
         // Then
         assertThat(result).isTrue();
@@ -76,10 +79,12 @@ class GiveAwayEventHandlerTest {
     void apply_ApplicableOrderAndVisitDate_DiscountChampagnePrice() {
         // Given
         final VisitDate visitDate = new VisitDate("4");
-        final Order order = new Order("아이스크림-3, 티본스테이크-10");
+        final OrderHistory orderHistory = new OrderHistory("아이스크림-3, 티본스테이크-10");
+
+        final Order order = new Order(visitDate, orderHistory);
 
         // When
-        final int result = eventHandler.apply(order, visitDate);
+        final int result = eventHandler.apply(order);
 
         // Then
         assertThat(result).isEqualTo(-CHAMPAGNE.getMenuPrice());

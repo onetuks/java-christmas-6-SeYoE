@@ -1,9 +1,10 @@
 package christmas.event.handler;
 
-import static christmas.order.Menu.CHAMPAGNE;
+import static christmas.order.vo.Menu.CHAMPAGNE;
 
 import christmas.event.EventHandler;
 import christmas.order.Order;
+import christmas.order.OrderHistory;
 import christmas.order.VisitDate;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -19,13 +20,16 @@ public class GiveAwayEventHandler implements EventHandler {
             .toList();
 
     @Override
-    public boolean supports(final Order order, final VisitDate visitDate) {
-        return supportMinimumPrice(order) && supportVisitDate(visitDate);
+    public boolean supports(final Order order) {
+        final boolean validVisitDate = supportVisitDate(order.visitDate());
+        final boolean validPriceLimit = supportMinimumPrice(order.orderHistory());
+
+        return validVisitDate && validPriceLimit;
     }
 
     @Override
-    public boolean supportMinimumPrice(final Order order) {
-        return order.getTotalPrice() >= MINIMUM_PRICE;
+    public boolean supportMinimumPrice(final OrderHistory orderHistory) {
+        return orderHistory.getTotalPrice() >= MINIMUM_PRICE;
     }
 
     @Override
@@ -34,7 +38,7 @@ public class GiveAwayEventHandler implements EventHandler {
     }
 
     @Override
-    public int apply(final Order order, final VisitDate visitDate) {
+    public int apply(final Order order) {
         return -CHAMPAGNE.getMenuPrice();
     }
 }

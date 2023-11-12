@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class OrderTest {
+class OrderHistoryTest {
 
     @Test
     @DisplayName("중복되지 않은 메뉴 주문 시 주문 메뉴 생성 성공한다.")
@@ -16,7 +16,7 @@ class OrderTest {
         final String inputOrder = "해산물파스타-2, 레드와인-1, 초코케이크-1";
 
         // When
-        final Order result = new Order(inputOrder);
+        final OrderHistory result = new OrderHistory(inputOrder);
 
         // Then
         assertThat(result.getTotalPrice()).isGreaterThan(1_000);
@@ -29,7 +29,7 @@ class OrderTest {
         final String inputOrder = "시저샐러드-1, 시저샐러드-1";
 
         // When & Then
-        assertThatThrownBy(() -> new Order(inputOrder))
+        assertThatThrownBy(() -> new OrderHistory(inputOrder))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_MENU_ORDER.getMessage());
     }
@@ -41,7 +41,7 @@ class OrderTest {
         final String inputOrder = "해산물파스타-17, 레드와인-3, 초코케이크-1";
 
         // When & Then
-        assertThatThrownBy(() -> new Order(inputOrder))
+        assertThatThrownBy(() -> new OrderHistory(inputOrder))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_MENU_ORDER.getMessage());
     }
@@ -53,7 +53,7 @@ class OrderTest {
         final String inputOrder = "레드와인-3";
 
         // When & Then
-        assertThatThrownBy(() -> new Order(inputOrder))
+        assertThatThrownBy(() -> new OrderHistory(inputOrder))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_MENU_ORDER.getMessage());
     }

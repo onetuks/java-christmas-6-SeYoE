@@ -2,6 +2,7 @@ package christmas.event.handler;
 
 import christmas.event.EventHandler;
 import christmas.order.Order;
+import christmas.order.OrderHistory;
 import christmas.order.VisitDate;
 import java.util.List;
 
@@ -14,13 +15,16 @@ public class StarDayEventHandler implements EventHandler {
     private static final List<Integer> STAR_DAYS = List.of(3, 10, 17, 24, 25, 31);
 
     @Override
-    public boolean supports(final Order order, final VisitDate visitDate) {
-        return supportMinimumPrice(order) && supportVisitDate(visitDate);
+    public boolean supports(final Order order) {
+        final boolean validVisitDate = supportVisitDate(order.visitDate());
+        final boolean validPriceLimit = supportMinimumPrice(order.orderHistory());
+
+        return validVisitDate && validPriceLimit;
     }
 
     @Override
-    public boolean supportMinimumPrice(final Order order) {
-        return order.getTotalPrice() >= MINIMUM_PRICE;
+    public boolean supportMinimumPrice(final OrderHistory orderHistory) {
+        return orderHistory.getTotalPrice() >= MINIMUM_PRICE;
     }
 
     @Override
@@ -29,7 +33,7 @@ public class StarDayEventHandler implements EventHandler {
     }
 
     @Override
-    public int apply(final Order order, final VisitDate visitDate) {
+    public int apply(final Order order) {
         return -DISCOUNT_PRICE;
     }
 

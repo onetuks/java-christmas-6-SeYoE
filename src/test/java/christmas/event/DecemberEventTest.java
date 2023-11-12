@@ -3,6 +3,7 @@ package christmas.event;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.order.Order;
+import christmas.order.OrderHistory;
 import christmas.order.VisitDate;
 import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
@@ -15,10 +16,12 @@ class DecemberEventTest {
     void applyEvents_VisitDateAndOrder_Map() {
         // Given
         final VisitDate visitDate = new VisitDate("25");
-        final Order order = new Order("초코케이크-2, 티본스테이크-3, 제로콜라-3");
+        final OrderHistory orderHistory = new OrderHistory("초코케이크-2, 티본스테이크-3, 제로콜라-3");
+
+        final Order order = new Order(visitDate, orderHistory);
 
         // When
-        Map<DecemberEvent, Integer> result = DecemberEvent.applyEvents(order, visitDate);
+        Map<DecemberEvent, Integer> result = DecemberEvent.applyEvents(order);
 
         // Then
         assertThat(result.keySet()).hasSize(4);
@@ -29,10 +32,12 @@ class DecemberEventTest {
     void applyEvents_VisitDateAndOrder_EmptyMap() {
         // Given
         final VisitDate visitDate = new VisitDate("26");
-        final Order order = new Order("아이스크림-1");
+        final OrderHistory orderHistory = new OrderHistory("아이스크림-1");
+
+        final Order order = new Order(visitDate, orderHistory);
 
         // When
-        Map<DecemberEvent, Integer> result = DecemberEvent.applyEvents(order, visitDate);
+        Map<DecemberEvent, Integer> result = DecemberEvent.applyEvents(order);
 
         // Then
         assertThat(result.keySet()).isEmpty();
