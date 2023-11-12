@@ -2,12 +2,15 @@ package christmas.vo;
 
 import static christmas.error.ErrorMessage.MORE_THAN_MENU_AMOUNT_LIMIT;
 import static christmas.error.ErrorMessage.INVALID_MENU_ORDER;
+import static christmas.error.ErrorMessage.NOT_ONLY_BEVERAGE_ORDER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.in;
 
 import christmas.order.Order;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.internal.matchers.Or;
 
 class OrderTest {
 
@@ -46,6 +49,18 @@ class OrderTest {
         assertThatThrownBy(() -> new Order(inputOrder))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(MORE_THAN_MENU_AMOUNT_LIMIT.getMessage());
+    }
+
+    @Test
+    @DisplayName("음료만 주문하면 예외를 던진다.")
+    void createOrder_OnlyBeverage_Exception() {
+        // Given
+        final String inputOrder = "레드와인-3";
+
+        // When & Then
+        assertThatThrownBy(() -> new Order(inputOrder))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NOT_ONLY_BEVERAGE_ORDER.getMessage());
     }
 
 }

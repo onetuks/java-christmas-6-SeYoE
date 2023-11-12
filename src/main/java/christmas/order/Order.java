@@ -2,10 +2,13 @@ package christmas.order;
 
 import static christmas.error.ErrorMessage.MORE_THAN_MENU_AMOUNT_LIMIT;
 import static christmas.error.ErrorMessage.INVALID_MENU_ORDER;
+import static christmas.error.ErrorMessage.NOT_ONLY_BEVERAGE_ORDER;
+import static christmas.order.MenuType.BEVERAGE;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Order {
@@ -20,6 +23,7 @@ public class Order {
         final Map<Menu, OrderAmount> orders = getOrderMenus(orderLines);
 
         validateAmountLimit(orders);
+        validateOnlyBeverage(orders);
 
         this.orderHistory = orders;
     }
@@ -78,6 +82,17 @@ public class Order {
 
         if (totalAmount > ORDER_MENU_AMOUNT_LIMIT) {
             throw new IllegalArgumentException(MORE_THAN_MENU_AMOUNT_LIMIT.getMessage());
+        }
+    }
+
+    private void validateOnlyBeverage(final Map<Menu, OrderAmount> orders) {
+        final Set<MenuType> menuTypes = orders.keySet()
+                .stream()
+                .map(Menu::getMenuType)
+                .collect(Collectors.toSet());
+
+        if (menuTypes.size() == 1 && menuTypes.contains(BEVERAGE)) {
+            throw new IllegalArgumentException(NOT_ONLY_BEVERAGE_ORDER.getMessage());
         }
     }
 
