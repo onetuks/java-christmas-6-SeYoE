@@ -22,6 +22,8 @@ public class EventPlanner {
 
         OrderMenus orderMenus = inputView.inputMenuOrder();
 
-        System.out.println(orderMenus);
+        outputView.outputEventDetails(visitDate);
+
+
     }
 }

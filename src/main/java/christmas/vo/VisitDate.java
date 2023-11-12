@@ -3,15 +3,18 @@ package christmas.vo;
 import static christmas.error.ErrorMessage.INVALID_DATE;
 import static christmas.error.ErrorMessage.NOT_DIGIT_DATE;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.StringJoiner;
 
 public class VisitDate {
 
+    private static final List<Integer> STAR_DAYS = List.of(3, 10, 17, 24, 25, 31);
     private static final int FIRST_DATE = 1;
     private static final int LAST_DATE = 31;
 
     private final int date;
+    private final boolean isStarDay;
 
     public VisitDate(final String date) {
         int parsedDate = parseDate(date);
@@ -19,10 +22,15 @@ public class VisitDate {
         validateDate(parsedDate);
 
         this.date = parsedDate;
+        this.isStarDay = getIsStarDay(parsedDate);
     }
 
     public int getDate() {
         return date;
+    }
+
+    public boolean isStarDay() {
+        return isStarDay;
     }
 
     @Override
@@ -63,12 +71,16 @@ public class VisitDate {
         }
     }
 
-    private boolean isGreaterThanLastDate(int date) {
+    private boolean isGreaterThanLastDate(final int date) {
         return date > LAST_DATE;
     }
 
-    private boolean isLessThanFirstDate(int date) {
+    private boolean isLessThanFirstDate(final int date) {
         return date < FIRST_DATE;
+    }
+
+    private boolean getIsStarDay(final int date) {
+        return STAR_DAYS.contains(date);
     }
 
 }

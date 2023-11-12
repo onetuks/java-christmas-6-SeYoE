@@ -61,4 +61,34 @@ class VisitDateTest {
         assertThat(result).isEqualTo(dateValue);
     }
 
+    @Test
+    @DisplayName("방문일이 별 있는 날짜면 별 있는 날짜를 참으로 반환")
+    void createVisitDate_ByStarDay_IsStarDayTrue() {
+        // Given
+        final String dateValue = "3";
+
+        // When
+        final VisitDate visitDate = new VisitDate(dateValue);
+
+        // Then
+        final boolean result = visitDate.isStarDay();
+
+        assertThat(result).isTrue();
+    }
+
+    @Test
+    @DisplayName("방문일이 별 없는 날짜면 별 있는 날짜를 거짓으로 반환")
+    void createVisitDate_ByStarDay_IsStarDayFalse() {
+        // Given
+        final String dateValue = "4";
+
+        // When
+        final VisitDate visitDate = new VisitDate(dateValue);
+
+        // Then
+        final boolean result = visitDate.isStarDay();
+
+        assertThat(result).isFalse();
+    }
+
 }
