@@ -1,11 +1,12 @@
 package christmas.result;
 
-import static christmas.result.EventBadge.NONE;
-import static christmas.result.EventBadge.SANTA;
-import static christmas.result.EventBadge.STAR;
-import static christmas.result.EventBadge.TREE;
+import static christmas.result.vo.EventBadge.NONE;
+import static christmas.result.vo.EventBadge.SANTA;
+import static christmas.result.vo.EventBadge.STAR;
+import static christmas.result.vo.EventBadge.TREE;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.result.vo.EventBadge;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

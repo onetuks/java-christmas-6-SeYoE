@@ -2,6 +2,8 @@ package christmas.result;
 
 import static christmas.error.ErrorMessage.INVALID_BENEFIT_PRICE;
 
+import christmas.result.vo.EventBadge;
+
 public class EventResult {
 
     private final int totalOriginPrice;

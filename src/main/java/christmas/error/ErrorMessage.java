@@ -8,6 +8,7 @@ public enum ErrorMessage {
     INVALID_BENEFIT_PRICE("[ERROR] 혜택 금액이 원래 구매 금액보다 큽니다.");
 
     private static final String RETRY_MESSAGE = "다시 입력해 주세요.";
+
     private final String message;
 
     ErrorMessage(final String message) {

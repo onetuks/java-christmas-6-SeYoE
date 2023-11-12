@@ -1,4 +1,4 @@
-package christmas.result;
+package christmas.result.vo;
 
 import java.util.Arrays;
 
@@ -11,10 +11,7 @@ public enum EventBadge {
     private final String badgeName;
     private final int boundPrice;
 
-    EventBadge(
-            final String badgeName,
-            final int boundPrice
-    ) {
+    EventBadge(final String badgeName, final int boundPrice) {
         this.badgeName = badgeName;
         this.boundPrice = boundPrice;
     }
