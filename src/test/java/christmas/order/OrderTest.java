@@ -1,16 +1,13 @@
-package christmas.vo;
+package christmas.order;
 
 import static christmas.error.ErrorMessage.MORE_THAN_MENU_AMOUNT_LIMIT;
 import static christmas.error.ErrorMessage.INVALID_MENU_ORDER;
 import static christmas.error.ErrorMessage.NOT_ONLY_BEVERAGE_ORDER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.Assertions.in;
 
-import christmas.order.Order;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.matchers.Or;
 
 class OrderTest {
 

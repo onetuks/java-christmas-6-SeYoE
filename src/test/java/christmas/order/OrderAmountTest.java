@@ -1,11 +1,10 @@
-package christmas.vo;
+package christmas.order;
 
 import static christmas.error.ErrorMessage.NEGATIVE_MENU_AMOUNT;
 import static christmas.error.ErrorMessage.NOT_DIGIT_MENU_AMOUNT;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import christmas.order.OrderAmount;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
