@@ -40,5 +40,7 @@ public class EventPlanner {
         EventResult eventResult = new EventResult(order.getTotalPrice(), eventBenefit.getTotalBenefitPrice());
 
         outputView.outputPaymentPrice(eventResult);
+
+        outputView.outputEventBadge(eventResult);
     }
 }

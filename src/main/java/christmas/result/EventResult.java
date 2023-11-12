@@ -18,6 +18,11 @@ public class EventResult {
         return totalOriginPrice - totalBenefitPrice;
     }
 
+    public String getEventBadgeName() {
+        return EventBadge.priceOf(totalBenefitPrice)
+                .getBadgeName();
+    }
+
     private void validatePrice(final int totalOriginPrice, final int totalBenefitPrice) {
         if (totalOriginPrice < totalBenefitPrice) {
             throw new IllegalArgumentException(TOO_BIG_BENEFIT_PRICE.getMessage());

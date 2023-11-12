@@ -94,4 +94,12 @@ public class OutputView {
 
         System.out.println(format);
     }
+
+    public void outputEventBadge(final EventResult eventResult) {
+        System.out.println(EVENT_BADGE_TITLE);
+
+        String eventBadgeName = eventResult.getEventBadgeName();
+
+        System.out.println(eventBadgeName);
+    }
 }
