@@ -1,6 +1,6 @@
 package christmas.vo;
 
-import static christmas.error.ErrorMessage.LESS_THAN_ZERO_MENU_AMOUNT;
+import static christmas.error.ErrorMessage.NEGATIVE_MENU_AMOUNT;
 import static christmas.error.ErrorMessage.NOT_DIGIT_MENU_AMOUNT;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -32,7 +32,7 @@ class OrderAmountTest {
         // When & Then
         assertThatThrownBy(() -> new OrderAmount(amount))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(LESS_THAN_ZERO_MENU_AMOUNT.getMessage());
+                .hasMessage(NEGATIVE_MENU_AMOUNT.getMessage());
     }
 
     @Test

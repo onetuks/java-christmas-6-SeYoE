@@ -1,6 +1,6 @@
 package christmas.io;
 
-import christmas.order.OrderMenus;
+import christmas.order.Order;
 import christmas.order.VisitDate;
 import java.text.DecimalFormat;
 
@@ -27,10 +27,10 @@ public class OutputView {
         System.out.println(message);
     }
 
-    public void outputOrderMenu(final OrderMenus orderMenus) {
+    public void outputOrderMenu(final Order order) {
         System.out.println(ORDER_MENU_TITLE);
 
-        orderMenus.getOrderHistory()
+        order.getOrderHistory()
                 .forEach((menu, orderAmount) -> {
                     final String menuName = menu.getMenuName();
                     final int amount = orderAmount.getAmount();
@@ -40,11 +40,11 @@ public class OutputView {
                 });
     }
 
-    public void outputTotalPrice(final OrderMenus orderMenus) {
+    public void outputTotalPrice(final Order order) {
         System.out.println(TOTAL_PRICE_TITLE);
 
         final DecimalFormat decimalFormat = new DecimalFormat("#,###원");
-        final String totalPrice = decimalFormat.format(orderMenus.getTotalPrice());
+        final String totalPrice = decimalFormat.format(order.getTotalPrice());
 
         System.out.println(totalPrice);
     }

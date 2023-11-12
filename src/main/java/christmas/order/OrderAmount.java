@@ -1,6 +1,6 @@
 package christmas.order;
 
-import static christmas.error.ErrorMessage.LESS_THAN_ZERO_MENU_AMOUNT;
+import static christmas.error.ErrorMessage.NEGATIVE_MENU_AMOUNT;
 import static christmas.error.ErrorMessage.NOT_DIGIT_MENU_AMOUNT;
 
 public class OrderAmount {
@@ -12,7 +12,7 @@ public class OrderAmount {
     public OrderAmount(final String amount) {
         final int parsedAmount = parseInt(amount);
 
-        validateGreaterThanZero(parsedAmount);
+        validatePositiveAmount(parsedAmount);
 
         this.amount = parsedAmount;
     }
@@ -21,9 +21,9 @@ public class OrderAmount {
         return amount;
     }
 
-    private void validateGreaterThanZero(final int parsedAmount) {
+    private void validatePositiveAmount(final int parsedAmount) {
         if (parsedAmount <= AMOUNT_LOWER_BOUND) {
-            throw new IllegalArgumentException(LESS_THAN_ZERO_MENU_AMOUNT.getMessage());
+            throw new IllegalArgumentException(NEGATIVE_MENU_AMOUNT.getMessage());
         }
     }
 

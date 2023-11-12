@@ -3,7 +3,6 @@ package christmas;
 import christmas.io.InputView;
 import christmas.io.OutputView;
 import christmas.order.Order;
-import christmas.order.OrderMenus;
 import christmas.order.VisitDate;
 
 public class EventPlanner {
@@ -20,15 +19,12 @@ public class EventPlanner {
         outputView.outputWelcome();
 
         final VisitDate visitDate = inputView.inputVisitDate();
-        final OrderMenus orderMenus = inputView.inputMenuOrder();
-
-        final Order order = new Order(visitDate, orderMenus);
-
+        final Order order = inputView.inputMenuOrder();
 
         outputView.outputEventDetails(visitDate);
 
-        outputView.outputOrderMenu(orderMenus);
+        outputView.outputOrderMenu(order);
 
-        outputView.outputTotalPrice(orderMenus);
+        outputView.outputTotalPrice(order);
     }
 }

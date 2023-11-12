@@ -12,10 +12,9 @@ classDiagram
 
     class Order {
         VisitDate visitdate
-        Order orderMenus
+        Order order
     }
     Order --> VisitDate
-    Order --> OrderMenus
 
     class VisitDate {
         int date
@@ -25,14 +24,8 @@ classDiagram
     }
     VisitDate --> EventType
 
-    class OrderMenus {
-        Map<Menu, OrderAmount> orderHistory
-        Map<Menu, OrderAmount> getOrderHistory()
-        Menu getMenu()
-        int getAmount()
-    }
-    OrderMenus --> Menu
-    OrderMenus --> OrderAmount
+    Order --> Menu
+    Order --> OrderAmount
     class OrderAmount {
         int amount
         int getAmount()
