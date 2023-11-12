@@ -28,6 +28,11 @@ public class EventBenefit {
         return NONE;
     }
 
+
+    public boolean isEmpty() {
+        return benefits.isEmpty();
+    }
+
     public Map<DecemberEvent, Integer> getBenefits() {
         return benefits;
     }

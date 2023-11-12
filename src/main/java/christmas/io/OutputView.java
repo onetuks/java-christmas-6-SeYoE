@@ -8,6 +8,7 @@ import java.text.DecimalFormat;
 public class OutputView {
 
     private static final DecimalFormat decimalFormat = new DecimalFormat("#,###원");
+    private static final String NONE = "없음";
 
     private static final String WELCOME_TEXT = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
     private static final String ORDER_MENU_TITLE = "\n<주문 메뉴>";
@@ -59,7 +60,7 @@ public class OutputView {
         System.out.println(eventBenefit.getGiveAwayMenu());
     }
 
-    public void outputEventBenefits(final EventBenefit eventBenefit) {
+    public void outputEventBenefitPrices(final EventBenefit eventBenefit) {
         System.out.println(BENEFIT_DETAILS_TITLE);
 
         eventBenefit.getBenefits()
@@ -71,5 +72,10 @@ public class OutputView {
 
                     System.out.println(format);
                 });
+
+        if (eventBenefit.isEmpty()) {
+            System.out.println(NONE);
+        }
+    }
     }
 }
