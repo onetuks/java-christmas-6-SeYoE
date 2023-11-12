@@ -23,7 +23,7 @@ public class InputView {
         }
     }
 
-    public OrderHistory inputMenuOrder() {
+    public OrderHistory inputOrderHistory() {
         while (true) {
             System.out.println(MENU_COUNT_QUERY);
 

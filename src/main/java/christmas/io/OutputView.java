@@ -24,17 +24,17 @@ public class OutputView {
     private static final String ORDER_MENU_FORMAT = "%s %d개";
     private static final String EVENT_BENEFIT_FORMAT = "%s: -%s";
 
-    public void outputWelcome() {
+    public void printWelcome() {
         System.out.println(WELCOME_TEXT);
     }
 
-    public void outputEventDetails(final VisitDate visitDate) {
+    public void printEventDetails(final VisitDate visitDate) {
         final String message = String.format(EVENT_DETAILS_FORMAT, visitDate.getDate());
 
         System.out.println(message);
     }
 
-    public void outputOrderMenu(final OrderHistory orderHistory) {
+    public void printOrderMenu(final OrderHistory orderHistory) {
         System.out.println(ORDER_MENU_TITLE);
 
         orderHistory.getHistory()
@@ -47,7 +47,7 @@ public class OutputView {
                 });
     }
 
-    public void outputTotalPrice(final OrderHistory orderHistory) {
+    public void printTotalPrice(final OrderHistory orderHistory) {
         System.out.println(TOTAL_PRICE_TITLE);
 
         final String totalPrice = decimalFormat.format(orderHistory.getTotalPrice());
@@ -55,13 +55,13 @@ public class OutputView {
         System.out.println(totalPrice);
     }
 
-    public void outputGiveAwayMenu(final EventBenefit eventBenefit) {
+    public void printGiveAwayMenu(final EventBenefit eventBenefit) {
         System.out.println(GIVEAWAY_MENU_TITLE);
 
         System.out.println(eventBenefit.getGiveAwayMenu());
     }
 
-    public void outputEventBenefitPrices(final EventBenefit eventBenefit) {
+    public void printEventBenefitPrices(final EventBenefit eventBenefit) {
         System.out.println(BENEFIT_DETAILS_TITLE);
 
         if (eventBenefit.isEmpty()) {
@@ -79,7 +79,7 @@ public class OutputView {
                 });
     }
 
-    public void outputTotalBenefitPrice(final EventBenefit eventBenefit) {
+    public void printTotalBenefitPrice(final EventBenefit eventBenefit) {
         System.out.println(TOTAL_BENEFIT_PRICE_TITLE);
 
         final String totalBenefitPrice = decimalFormat.format(eventBenefit.getTotalBenefitPrice());
@@ -87,7 +87,7 @@ public class OutputView {
         System.out.println(totalBenefitPrice);
     }
 
-    public void outputPaymentPrice(final EventResult eventResult) {
+    public void printPaymentPrice(final EventResult eventResult) {
         System.out.println(PAYMENT_PRICE_TITLE);
 
         final String format = decimalFormat.format(eventResult.getPaymentPrice());
@@ -95,7 +95,7 @@ public class OutputView {
         System.out.println(format);
     }
 
-    public void outputEventBadge(final EventResult eventResult) {
+    public void printEventBadge(final EventResult eventResult) {
         System.out.println(EVENT_BADGE_TITLE);
 
         final String eventBadgeName = eventResult.getEventBadgeName();

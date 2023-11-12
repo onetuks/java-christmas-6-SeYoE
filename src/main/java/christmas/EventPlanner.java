@@ -33,29 +33,29 @@ public class EventPlanner {
 
         final EventResult eventResult = new EventResult(originPrice, benefitPrice);
 
-        outputView.outputPaymentPrice(eventResult);
-        outputView.outputEventBadge(eventResult);
+        outputView.printPaymentPrice(eventResult);
+        outputView.printEventBadge(eventResult);
     }
 
     private EventBenefit eventBenefit(final Order order) {
         final EventBenefit eventBenefit = new EventBenefit(order);
 
-        outputView.outputGiveAwayMenu(eventBenefit);
-        outputView.outputEventBenefitPrices(eventBenefit);
-        outputView.outputTotalBenefitPrice(eventBenefit);
+        outputView.printGiveAwayMenu(eventBenefit);
+        outputView.printEventBenefitPrices(eventBenefit);
+        outputView.printTotalBenefitPrice(eventBenefit);
 
         return eventBenefit;
     }
 
     private Order eventOrder() {
-        outputView.outputWelcome();
+        outputView.printWelcome();
 
         final VisitDate visitDate = inputView.inputVisitDate();
-        final OrderHistory orderHistory = inputView.inputMenuOrder();
+        final OrderHistory orderHistory = inputView.inputOrderHistory();
 
-        outputView.outputEventDetails(visitDate);
-        outputView.outputOrderMenu(orderHistory);
-        outputView.outputTotalPrice(orderHistory);
+        outputView.printEventDetails(visitDate);
+        outputView.printOrderMenu(orderHistory);
+        outputView.printTotalPrice(orderHistory);
 
         return new Order(visitDate, orderHistory);
     }
