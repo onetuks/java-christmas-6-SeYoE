@@ -1,6 +1,8 @@
-package christmas;
+package christmas.io;
 
 import camp.nextstep.edu.missionutils.Console;
+import christmas.vo.OrderMenus;
+import christmas.vo.VisitDate;
 
 public class InputView {
 
@@ -14,6 +16,20 @@ public class InputView {
             try {
                 String inputDate = Console.readLine();
                 return new VisitDate(inputDate);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    public OrderMenus inputMenuOrder() {
+        while (true) {
+            System.out.println(MENU_COUNT_QUERY);
+
+            try {
+                String inputMenuLine = Console.readLine();
+
+                return new OrderMenus(inputMenuLine);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }

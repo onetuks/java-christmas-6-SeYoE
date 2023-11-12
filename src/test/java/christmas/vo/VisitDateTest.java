@@ -1,7 +1,7 @@
-package christmas;
+package christmas.vo;
 
-import static christmas.ErrorMessage.INVALID_DATE;
-import static christmas.ErrorMessage.NOT_DIGIT_DATE;
+import static christmas.error.ErrorMessage.INVALID_DATE;
+import static christmas.error.ErrorMessage.NOT_DIGIT_DATE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

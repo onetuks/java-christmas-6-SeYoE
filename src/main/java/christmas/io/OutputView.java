@@ -1,4 +1,4 @@
-package christmas;
+package christmas.io;
 
 public class OutputView {
 
