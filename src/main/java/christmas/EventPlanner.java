@@ -5,6 +5,7 @@ import christmas.io.InputView;
 import christmas.io.OutputView;
 import christmas.order.Order;
 import christmas.order.VisitDate;
+import christmas.result.EventResult;
 
 public class EventPlanner {
 
@@ -35,5 +36,9 @@ public class EventPlanner {
         outputView.outputEventBenefitPrices(eventBenefit);
 
         outputView.outputTotalBenefitPrice(eventBenefit);
+
+        EventResult eventResult = new EventResult(order.getTotalPrice(), eventBenefit.getTotalBenefitPrice());
+
+        outputView.outputPaymentPrice(eventResult);
     }
 }

@@ -3,6 +3,7 @@ package christmas.io;
 import christmas.event.EventBenefit;
 import christmas.order.Order;
 import christmas.order.VisitDate;
+import christmas.result.EventResult;
 import java.text.DecimalFormat;
 
 public class OutputView {
@@ -84,5 +85,13 @@ public class OutputView {
         final String totalBenefitPrice = decimalFormat.format(eventBenefit.getTotalBenefitPrice());
 
         System.out.println(totalBenefitPrice);
+    }
+
+    public void outputPaymentPrice(final EventResult eventResult) {
+        System.out.println(PAYMENT_PRICE_TITLE);
+
+        final String format = decimalFormat.format(eventResult.getPaymentPrice());
+
+        System.out.println(format);
     }
 }

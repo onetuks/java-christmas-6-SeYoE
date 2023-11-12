@@ -10,7 +10,9 @@ public enum ErrorMessage {
     NOT_DIGIT_MENU_AMOUNT("[ERROR] 메뉴 수량은 숫자여야 합니다."),
     NEGATIVE_MENU_AMOUNT("[ERROR] 메뉴 수량은 0보다 많아야 합니다."),
     MORE_THAN_MENU_AMOUNT_LIMIT("[ERROR] 한 번에 20개 이상의 메뉴는 주문할 수 없습니다."),
-    NOT_ONLY_BEVERAGE_ORDER("[ERROR] 음료만 주문할 수 없습니다.")
+    NOT_ONLY_BEVERAGE_ORDER("[ERROR] 음료만 주문할 수 없습니다."),
+
+    TOO_BIG_BENEFIT_PRICE("[ERROR] 혜택 금액이 원래 구매 금액보다 큽니다.")
     ;
 
     private static final String RETRY_MESSAGE = "다시 입력해 주세요.";

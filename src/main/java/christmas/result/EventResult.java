@@ -1,0 +1,27 @@
+package christmas.result;
+
+import static christmas.error.ErrorMessage.TOO_BIG_BENEFIT_PRICE;
+
+public class EventResult {
+
+    private final int totalOriginPrice;
+    private final int totalBenefitPrice;
+
+    public EventResult(final int totalOriginPrice, final int totalBenefitPrice) {
+        validatePrice(totalOriginPrice, totalBenefitPrice);
+
+        this.totalOriginPrice = totalOriginPrice;
+        this.totalBenefitPrice = totalBenefitPrice;
+    }
+
+    public int getPaymentPrice() {
+        return totalOriginPrice - totalBenefitPrice;
+    }
+
+    private void validatePrice(final int totalOriginPrice, final int totalBenefitPrice) {
+        if (totalOriginPrice < totalBenefitPrice) {
+            throw new IllegalArgumentException(TOO_BIG_BENEFIT_PRICE.getMessage());
+        }
+    }
+
+}
