@@ -17,8 +17,16 @@ public class OrderMenus {
         this.menus = getOrderMenus(orders);
     }
 
-    public Map<Menu, OrderAmount> getMenus() {
-        return menus;
+    public int getTotalPrice() {
+        return menus.entrySet()
+                .stream()
+                .mapToInt(entry -> {
+                    final int menuPrice = entry.getKey().getMenuPrice();
+                    final int amount = entry.getValue().getAmount();
+
+                    return menuPrice * amount;
+                })
+                .sum();
     }
 
     public boolean isEmpty() {

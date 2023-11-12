@@ -2,6 +2,7 @@ package christmas.io;
 
 import christmas.vo.OrderMenus;
 import christmas.vo.VisitDate;
+import java.text.DecimalFormat;
 
 public class OutputView {
 
@@ -37,5 +38,14 @@ public class OutputView {
 
                     System.out.println(format);
                 });
+    }
+
+    public void outputTotalPrice(final OrderMenus orderMenus) {
+        System.out.println(TOTAL_PRICE_TITLE);
+
+        final DecimalFormat decimalFormat = new DecimalFormat("#,###원");
+        final String totalPrice = decimalFormat.format(orderMenus.getTotalPrice());
+
+        System.out.println(totalPrice);
     }
 }

@@ -26,5 +26,6 @@ public class EventPlanner {
 
         outputView.outputOrderMenu(orderMenus);
 
+        outputView.outputTotalPrice(orderMenus);
     }
 }
