@@ -94,7 +94,7 @@ class StarDayEventHandlerTest {
         final int result = eventHandler.apply(order, visitDate);
 
         // Then
-        assertThat(result).isEqualTo(1_000);
+        assertThat(result).isEqualTo(-1_000);
     }
 
 }

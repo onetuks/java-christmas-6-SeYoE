@@ -30,7 +30,7 @@ public class StarDayEventHandler implements EventHandler {
 
     @Override
     public int apply(final Order order, final VisitDate visitDate) {
-        return DISCOUNT_PRICE;
+        return -DISCOUNT_PRICE;
     }
 
 }

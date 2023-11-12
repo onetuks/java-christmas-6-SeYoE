@@ -35,6 +35,6 @@ public class GiveAwayEventHandler implements EventHandler {
 
     @Override
     public int apply(final Order order, final VisitDate visitDate) {
-        return CHAMPAGNE.getMenuPrice();
+        return -CHAMPAGNE.getMenuPrice();
     }
 }

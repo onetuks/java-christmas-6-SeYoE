@@ -94,7 +94,7 @@ class DdayEventHandlerTest {
         final int result = ddayEventHandler.apply(order, visitDate);
 
         // Then
-        assertThat(result).isGreaterThan(1_000);
+        assertThat(result).isLessThan(-1_000);
     }
 
 }

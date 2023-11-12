@@ -109,7 +109,7 @@ class NormalDayEventHandlerTest {
         final int result = eventHandler.apply(order, visitDate);
 
         // Then
-        assertThat(result).isEqualTo(2_023 * 4);
+        assertThat(result).isEqualTo(-2_023 * 4);
     }
 
 }

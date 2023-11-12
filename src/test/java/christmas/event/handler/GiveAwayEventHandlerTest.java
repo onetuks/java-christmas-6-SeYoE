@@ -82,7 +82,7 @@ class GiveAwayEventHandlerTest {
         final int result = eventHandler.apply(order, visitDate);
 
         // Then
-        assertThat(result).isEqualTo(CHAMPAGNE.getMenuPrice());
+        assertThat(result).isEqualTo(-CHAMPAGNE.getMenuPrice());
     }
 
 }

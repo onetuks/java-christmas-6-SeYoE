@@ -32,7 +32,7 @@ public class WeekEndDayEventHandler implements EventHandler {
 
     @Override
     public int apply(final Order order, final VisitDate visitDate) {
-        return order.getOrderHistory()
+        return -order.getOrderHistory()
                 .entrySet()
                 .stream()
                 .filter(entry -> entry.getKey().getMenuType() == MAIN_DISH)

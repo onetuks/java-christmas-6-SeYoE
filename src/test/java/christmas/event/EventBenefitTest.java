@@ -55,7 +55,7 @@ class EventBenefitTest {
         final int result = eventBenefit.getTotalBenefitPrice();
 
         // Then
-        assertThat(result).isEqualTo(10_469);
+        assertThat(result).isEqualTo(-10_469);
     }
 
 }

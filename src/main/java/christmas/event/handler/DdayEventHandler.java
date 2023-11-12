@@ -36,7 +36,7 @@ public class DdayEventHandler implements EventHandler {
 
     @Override
     public int apply(final Order order, final VisitDate visitDate) {
-        return DISCOUNT_DEFAULT_PRICE + DISCOUNT_PRICE * (visitDate.getDate() - EVENT_START_DATE);
+        return -(DISCOUNT_DEFAULT_PRICE + DISCOUNT_PRICE * (visitDate.getDate() - EVENT_START_DATE));
     }
 
 }
