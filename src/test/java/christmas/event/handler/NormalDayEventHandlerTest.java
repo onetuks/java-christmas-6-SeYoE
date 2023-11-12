@@ -44,8 +44,21 @@ class NormalDayEventHandlerTest {
     }
 
     @Test
-    @DisplayName("방문 날짜가 1~31 사이라면 이벤트 적용된다.")
-    void supportVisitDate_BetweenOneAndTwentyFive_True() {
+    @DisplayName("방문 날짜가 평일이 아니라면 이벤트 적용된다.")
+    void supportVisitDate_NotNormalDay_False() {
+        // Given
+        final VisitDate visitDate = new VisitDate("2");
+
+        // When
+        final boolean result = eventHandler.supportVisitDate(visitDate);
+
+        // Then
+        assertThat(result).isFalse();
+    }
+
+    @Test
+    @DisplayName("방문 날짜가 평일이면 이벤트 적용된다.")
+    void supportVisitDate_NormalDay_True() {
         // Given
         final VisitDate visitDate = new VisitDate("3");
 
@@ -57,7 +70,7 @@ class NormalDayEventHandlerTest {
     }
 
     @Test
-    @DisplayName("방문 날짜가 크리스마스 전이고, 총주문 금액이 만 원 이상이면 이벤트 적용된다.")
+    @DisplayName("방문 날짜가 평일이고, 총주문 금액이 만 원 이상이면 이벤트 적용된다.")
     void supports_BeforeChristmasAndGreaterThanMinimumPrice_True() {
         // Given
         final VisitDate visitDate = new VisitDate("4");
