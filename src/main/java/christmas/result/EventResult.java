@@ -1,6 +1,6 @@
 package christmas.result;
 
-import static christmas.error.ErrorMessage.TOO_BIG_BENEFIT_PRICE;
+import static christmas.error.ErrorMessage.INVALID_BENEFIT_PRICE;
 
 public class EventResult {
 
@@ -25,7 +25,7 @@ public class EventResult {
 
     private void validatePrice(final int totalOriginPrice, final int totalBenefitPrice) {
         if (totalOriginPrice < totalBenefitPrice) {
-            throw new IllegalArgumentException(TOO_BIG_BENEFIT_PRICE.getMessage());
+            throw new IllegalArgumentException(INVALID_BENEFIT_PRICE.getMessage());
         }
     }
 
