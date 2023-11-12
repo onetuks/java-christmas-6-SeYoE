@@ -25,6 +25,10 @@ public class OrderMenus {
         return this.menus.isEmpty();
     }
 
+    public Map<Menu, OrderAmount> getMenus() {
+        return menus;
+    }
+
     private List<String> parseOrders(final String inputOrder) {
         final String[] orders = inputOrder.split(",");
 

@@ -24,6 +24,7 @@ public class EventPlanner {
 
         outputView.outputEventDetails(visitDate);
 
+        outputView.outputOrderMenu(orderMenus);
 
     }
 }

@@ -43,10 +43,6 @@ public enum Menu {
                 .orElseThrow(() -> new IllegalArgumentException(INVALID_MENU_ORDER.getMessage()));
     }
 
-    public MenuType getMenuType() {
-        return menuType;
-    }
-
     public String getMenuName() {
         return menuName;
     }
