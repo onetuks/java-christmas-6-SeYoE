@@ -2,8 +2,9 @@ package christmas;
 
 import christmas.io.InputView;
 import christmas.io.OutputView;
-import christmas.vo.OrderMenus;
-import christmas.vo.VisitDate;
+import christmas.order.Order;
+import christmas.order.OrderMenus;
+import christmas.order.VisitDate;
 
 public class EventPlanner {
 
@@ -18,9 +19,11 @@ public class EventPlanner {
     public void run() {
         outputView.outputWelcome();
 
-        VisitDate visitDate = inputView.inputVisitDate();
+        final VisitDate visitDate = inputView.inputVisitDate();
+        final OrderMenus orderMenus = inputView.inputMenuOrder();
 
-        OrderMenus orderMenus = inputView.inputMenuOrder();
+        final Order order = new Order(visitDate, orderMenus);
+
 
         outputView.outputEventDetails(visitDate);
 

@@ -1,8 +1,8 @@
 package christmas.io;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.vo.OrderMenus;
-import christmas.vo.VisitDate;
+import christmas.order.OrderMenus;
+import christmas.order.VisitDate;
 
 public class InputView {
 

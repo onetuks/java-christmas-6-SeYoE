@@ -1,4 +1,4 @@
-package christmas.vo;
+package christmas.order;
 
 import static christmas.error.ErrorMessage.INVALID_MENU_ORDER;
 
@@ -9,16 +9,16 @@ import java.util.stream.Collectors;
 
 public class OrderMenus {
 
-    private final Map<Menu, OrderAmount> menus;
+    private final Map<Menu, OrderAmount> orderHistory;
 
     public OrderMenus(final String inputOrder) {
         final List<String> orders = parseOrders(inputOrder);
 
-        this.menus = getOrderMenus(orders);
+        this.orderHistory = getOrderMenus(orders);
     }
 
     public int getTotalPrice() {
-        return menus.entrySet()
+        return orderHistory.entrySet()
                 .stream()
                 .mapToInt(entry -> {
                     final int menuPrice = entry.getKey().getMenuPrice();
@@ -29,12 +29,8 @@ public class OrderMenus {
                 .sum();
     }
 
-    public boolean isEmpty() {
-        return this.menus.isEmpty();
-    }
-
-    public Map<Menu, OrderAmount> getMenus() {
-        return menus;
+    public Map<Menu, OrderAmount> getOrderHistory() {
+        return orderHistory;
     }
 
     private List<String> parseOrders(final String inputOrder) {

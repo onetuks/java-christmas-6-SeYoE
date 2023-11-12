@@ -1,7 +1,7 @@
 package christmas.io;
 
-import christmas.vo.OrderMenus;
-import christmas.vo.VisitDate;
+import christmas.order.OrderMenus;
+import christmas.order.VisitDate;
 import java.text.DecimalFormat;
 
 public class OutputView {
@@ -30,7 +30,7 @@ public class OutputView {
     public void outputOrderMenu(final OrderMenus orderMenus) {
         System.out.println(ORDER_MENU_TITLE);
 
-        orderMenus.getMenus()
+        orderMenus.getOrderHistory()
                 .forEach((menu, orderAmount) -> {
                     final String menuName = menu.getMenuName();
                     final int amount = orderAmount.getAmount();
@@ -48,4 +48,5 @@ public class OutputView {
 
         System.out.println(totalPrice);
     }
+
 }

@@ -1,4 +1,4 @@
-package christmas.vo;
+package christmas.order;
 
 public enum MenuType {
     APPETIZER,

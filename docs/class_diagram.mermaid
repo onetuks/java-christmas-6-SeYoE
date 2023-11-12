@@ -1,0 +1,77 @@
+classDiagram
+    class Application
+    Application --> EventPlanner
+
+    class EventPlanner
+    EventPlanner --> InputView
+    EventPlanner --> OutputView
+    EventPlanner --> Order
+    EventPlanner --> EventBenefit
+    class InputView
+    class OutputView
+
+    class Order {
+        VisitDate visitdate
+        Order orderMenus
+    }
+    Order --> VisitDate
+    Order --> OrderMenus
+
+    class VisitDate {
+        int date
+        List<EventDayType> eventDayTypes
+        int getVisitDate()
+        List<EventType> getEventDayTypes()
+    }
+    VisitDate --> EventType
+
+    class OrderMenus {
+        Map<Menu, OrderAmount> orderHistory
+        Map<Menu, OrderAmount> getOrderHistory()
+        Menu getMenu()
+        int getAmount()
+    }
+    OrderMenus --> Menu
+    OrderMenus --> OrderAmount
+    class OrderAmount {
+        int amount
+        int getAmount()
+    }
+    class Menu {
+        <<enumeration>>
+        MenuType menuType
+        String menuName
+        int menuPrice
+        static Menu nameOf()
+    }
+    Menu --> MenuType
+    class MenuType {
+        <<enumeration>>
+        APPETIZER
+        MAIN_DISH
+        DESERT
+        BEVERAGE
+    }
+
+    class EventBenefit {
+        Map<EventType, Integer> benefits
+        EventBadge badge
+    }
+    EventBenefit --> Order
+    EventBenefit --> EventType
+    EventBenefit --> EventBadge
+    class EventType {
+        <<enumeration>>
+        D_DAY_EVENT
+        NORMAL_DAY_EVENT
+        WEEK_END_EVENT
+        STAR_DAY_EVENT
+        GIVE_AWAY_EVENT
+    }
+    class EventBadge {
+        <<enumeration>>
+        NONE
+        STAR
+        TREE
+        SANTA
+    }

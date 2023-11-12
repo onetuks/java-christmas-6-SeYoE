@@ -1,10 +1,10 @@
-package christmas.vo;
+package christmas.order;
 
 import static christmas.error.ErrorMessage.INVALID_MENU_ORDER;
-import static christmas.vo.MenuType.APPETIZER;
-import static christmas.vo.MenuType.BEVERAGE;
-import static christmas.vo.MenuType.DESERT;
-import static christmas.vo.MenuType.MAIN_DISH;
+import static christmas.order.MenuType.APPETIZER;
+import static christmas.order.MenuType.BEVERAGE;
+import static christmas.order.MenuType.DESERT;
+import static christmas.order.MenuType.MAIN_DISH;
 
 import java.util.Arrays;
 import java.util.Objects;

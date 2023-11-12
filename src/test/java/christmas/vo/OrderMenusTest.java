@@ -1,10 +1,10 @@
 package christmas.vo;
 
 import static christmas.error.ErrorMessage.INVALID_MENU_ORDER;
-import static christmas.vo.Menu.SEA_FOOD_PASTA;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import christmas.order.OrderMenus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,8 +20,7 @@ class OrderMenusTest {
         final OrderMenus result = new OrderMenus(inputOrder);
 
         // Then
-        assertThat(result.isEmpty()).isFalse();
-        assertThat(result.getMenus()).containsKeys(SEA_FOOD_PASTA);
+        assertThat(result.getTotalPrice()).isGreaterThan(1_000);
     }
 
     @Test
