@@ -1,6 +1,6 @@
 package christmas.result;
 
-import static christmas.error.ErrorMessage.TOO_BIG_BENEFIT_PRICE;
+import static christmas.error.ErrorMessage.INVALID_BENEFIT_PRICE;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +18,7 @@ class EventResultTest {
         // When & Then
         assertThatThrownBy(() -> new EventResult(originPrice, benefitPrice))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(TOO_BIG_BENEFIT_PRICE.getMessage());
+                .hasMessage(INVALID_BENEFIT_PRICE.getMessage());
     }
 
 }

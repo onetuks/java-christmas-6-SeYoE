@@ -3,7 +3,6 @@ package christmas.event;
 import static christmas.event.DecemberEvent.GIVE_AWAY_EVENT;
 import static christmas.order.Menu.CHAMPAGNE;
 
-import christmas.order.Menu;
 import christmas.order.Order;
 import christmas.order.VisitDate;
 import java.text.MessageFormat;

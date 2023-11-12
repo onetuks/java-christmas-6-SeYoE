@@ -1,8 +1,6 @@
 package christmas.order;
 
-import static christmas.error.ErrorMessage.MORE_THAN_MENU_AMOUNT_LIMIT;
 import static christmas.error.ErrorMessage.INVALID_MENU_ORDER;
-import static christmas.error.ErrorMessage.NOT_ONLY_BEVERAGE_ORDER;
 import static christmas.order.MenuType.BEVERAGE;
 
 import java.util.Arrays;
@@ -81,7 +79,7 @@ public class Order {
                 .sum();
 
         if (totalAmount > ORDER_MENU_AMOUNT_LIMIT) {
-            throw new IllegalArgumentException(MORE_THAN_MENU_AMOUNT_LIMIT.getMessage());
+            throw new IllegalArgumentException(INVALID_MENU_ORDER.getMessage());
         }
     }
 
@@ -92,7 +90,7 @@ public class Order {
                 .collect(Collectors.toSet());
 
         if (menuTypes.size() == 1 && menuTypes.contains(BEVERAGE)) {
-            throw new IllegalArgumentException(NOT_ONLY_BEVERAGE_ORDER.getMessage());
+            throw new IllegalArgumentException(INVALID_MENU_ORDER.getMessage());
         }
     }
 

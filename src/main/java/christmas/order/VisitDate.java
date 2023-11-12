@@ -1,9 +1,7 @@
 package christmas.order;
 
 import static christmas.error.ErrorMessage.INVALID_DATE;
-import static christmas.error.ErrorMessage.NOT_DIGIT_DATE;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.StringJoiner;
 
@@ -54,7 +52,7 @@ public class VisitDate {
         try {
             return Integer.parseInt(date);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(NOT_DIGIT_DATE.getMessage());
+            throw new IllegalArgumentException(INVALID_DATE.getMessage());
         }
     }
 

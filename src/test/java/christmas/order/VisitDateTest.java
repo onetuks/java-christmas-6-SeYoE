@@ -1,7 +1,6 @@
 package christmas.order;
 
 import static christmas.error.ErrorMessage.INVALID_DATE;
-import static christmas.error.ErrorMessage.NOT_DIGIT_DATE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -19,7 +18,7 @@ class VisitDateTest {
         // When & Then
         assertThatThrownBy(() -> new VisitDate(dateValue))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(NOT_DIGIT_DATE.getMessage());
+                .hasMessage(INVALID_DATE.getMessage());
     }
 
     @Test

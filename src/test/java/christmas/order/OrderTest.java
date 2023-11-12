@@ -1,8 +1,6 @@
 package christmas.order;
 
-import static christmas.error.ErrorMessage.MORE_THAN_MENU_AMOUNT_LIMIT;
 import static christmas.error.ErrorMessage.INVALID_MENU_ORDER;
-import static christmas.error.ErrorMessage.NOT_ONLY_BEVERAGE_ORDER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -45,7 +43,7 @@ class OrderTest {
         // When & Then
         assertThatThrownBy(() -> new Order(inputOrder))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(MORE_THAN_MENU_AMOUNT_LIMIT.getMessage());
+                .hasMessage(INVALID_MENU_ORDER.getMessage());
     }
 
     @Test
@@ -57,7 +55,7 @@ class OrderTest {
         // When & Then
         assertThatThrownBy(() -> new Order(inputOrder))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(NOT_ONLY_BEVERAGE_ORDER.getMessage());
+                .hasMessage(INVALID_MENU_ORDER.getMessage());
     }
 
 }

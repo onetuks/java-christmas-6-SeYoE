@@ -1,7 +1,6 @@
 package christmas.order;
 
-import static christmas.error.ErrorMessage.NEGATIVE_MENU_AMOUNT;
-import static christmas.error.ErrorMessage.NOT_DIGIT_MENU_AMOUNT;
+import static christmas.error.ErrorMessage.INVALID_MENU_ORDER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -19,7 +18,7 @@ class OrderAmountTest {
         // When & Then
         assertThatThrownBy(() -> new OrderAmount(amount))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(NOT_DIGIT_MENU_AMOUNT.getMessage());
+                .hasMessage(INVALID_MENU_ORDER.getMessage());
     }
 
     @Test
@@ -31,7 +30,7 @@ class OrderAmountTest {
         // When & Then
         assertThatThrownBy(() -> new OrderAmount(amount))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(NEGATIVE_MENU_AMOUNT.getMessage());
+                .hasMessage(INVALID_MENU_ORDER.getMessage());
     }
 
     @Test
