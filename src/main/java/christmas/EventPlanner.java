@@ -33,5 +33,7 @@ public class EventPlanner {
         EventBenefit eventBenefit = new EventBenefit(order, visitDate);
 
         outputView.outputGiveAwayMenu(eventBenefit);
+
+        outputView.outputEventBenefits(eventBenefit);
     }
 }
