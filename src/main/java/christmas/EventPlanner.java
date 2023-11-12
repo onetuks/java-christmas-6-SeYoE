@@ -23,9 +23,19 @@ public class EventPlanner {
 
         final EventBenefit eventBenefit = eventBenefit(order);
 
+        eventResult(order, eventBenefit);
+    }
 
+    private void eventResult(final Order order, final EventBenefit eventBenefit) {
+        final int benefitPrice = eventBenefit.getTotalBenefitPrice();
+        final int originPrice = order.orderHistory()
+                .getTotalPrice();
 
+        final EventResult eventResult = new EventResult(originPrice, benefitPrice);
 
+        outputView.outputPaymentPrice(eventResult);
+        outputView.outputEventBadge(eventResult);
+    }
 
     private EventBenefit eventBenefit(final Order order) {
         final EventBenefit eventBenefit = new EventBenefit(order);
