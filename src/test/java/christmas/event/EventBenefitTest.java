@@ -1,15 +1,10 @@
 package christmas.event;
 
-import static christmas.event.DecemberEvent.GIVE_AWAY_EVENT;
 import static christmas.order.Menu.CHAMPAGNE;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-import christmas.order.Menu;
 import christmas.order.Order;
 import christmas.order.VisitDate;
-import java.util.Map;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -45,6 +40,22 @@ class EventBenefitTest {
 
         // Then
         assertThat(result).contains("없음");
+    }
+
+    @Test
+    @DisplayName("이벤트 덕으로 혜택 받은 금액을 반환한다.")
+    void getTotalBenefitPrice_ReturnBenefitPrice() {
+        // Given
+        final VisitDate visitDate = new VisitDate("25");
+        final Order order = new Order("티본스테이크-1, 초코케이크-3, 제로콜라-2");
+
+        final EventBenefit eventBenefit = new EventBenefit(order, visitDate);
+
+        // When
+        final int result = eventBenefit.getTotalBenefitPrice();
+
+        // Then
+        assertThat(result).isEqualTo(10_469);
     }
 
 }

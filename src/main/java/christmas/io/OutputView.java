@@ -22,6 +22,7 @@ public class OutputView {
     private static final String EVENT_DETAILS_FORMAT = "12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
     private static final String ORDER_MENU_FORMAT = "%s %d개";
     private static final String EVENT_BENEFIT_FORMAT = "%s: -%s";
+    private static final String TOTAL_BENEFIT_FORMAT = "-%s";
 
     public void outputWelcome() {
         System.out.println(WELCOME_TEXT);
@@ -77,5 +78,13 @@ public class OutputView {
             System.out.println(NONE);
         }
     }
+
+    public void outputTotalBenefitPrice(final EventBenefit eventBenefit) {
+        System.out.println(TOTAL_BENEFIT_PRICE_TITLE);
+
+        final String totalBenefitPrice = decimalFormat.format(eventBenefit.getTotalBenefitPrice());
+        final String format = String.format(TOTAL_BENEFIT_FORMAT, totalBenefitPrice);
+
+        System.out.println(format);
     }
 }

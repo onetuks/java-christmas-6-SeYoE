@@ -33,5 +33,7 @@ public class EventPlanner {
         outputView.outputGiveAwayMenu(eventBenefit);
 
         outputView.outputEventBenefitPrices(eventBenefit);
+
+        outputView.outputTotalBenefitPrice(eventBenefit);
     }
 }

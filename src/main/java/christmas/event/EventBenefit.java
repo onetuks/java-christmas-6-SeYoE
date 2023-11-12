@@ -28,6 +28,11 @@ public class EventBenefit {
         return NONE;
     }
 
+    public int getTotalBenefitPrice() {
+        return benefits.values()
+                .stream()
+                .reduce(0, Integer::sum);
+    }
 
     public boolean isEmpty() {
         return benefits.isEmpty();
