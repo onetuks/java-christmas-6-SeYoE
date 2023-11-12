@@ -1,6 +1,6 @@
-package christmas.event;
+package christmas.benefit;
 
-import static christmas.event.DecemberEvent.GIVE_AWAY_EVENT;
+import static christmas.benefit.DecemberEvent.GIVE_AWAY_EVENT;
 import static christmas.order.vo.Menu.CHAMPAGNE;
 
 import christmas.order.Order;

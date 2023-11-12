@@ -1,4 +1,4 @@
-package christmas.event;
+package christmas.benefit;
 
 import christmas.order.Order;
 import christmas.order.OrderHistory;

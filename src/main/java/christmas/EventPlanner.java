@@ -1,9 +1,10 @@
 package christmas;
 
-import christmas.event.EventBenefit;
+import christmas.benefit.EventBenefit;
 import christmas.io.InputView;
 import christmas.io.OutputView;
 import christmas.order.Order;
+import christmas.order.OrderHistory;
 import christmas.order.VisitDate;
 import christmas.result.EventResult;
 
@@ -20,15 +21,21 @@ public class EventPlanner {
     public void run() {
         final Order order = eventOrder();
 
+        final EventBenefit eventBenefit = eventBenefit(order);
 
 
 
 
 
+    private EventBenefit eventBenefit(final Order order) {
+        final EventBenefit eventBenefit = new EventBenefit(order);
 
+        outputView.outputGiveAwayMenu(eventBenefit);
         outputView.outputEventBenefitPrices(eventBenefit);
         outputView.outputTotalBenefitPrice(eventBenefit);
 
+        return eventBenefit;
+    }
 
     private Order eventOrder() {
         outputView.outputWelcome();

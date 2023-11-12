@@ -1,4 +1,4 @@
-package christmas.event;
+package christmas.benefit;
 
 import static christmas.order.vo.Menu.CHAMPAGNE;
 import static org.assertj.core.api.Assertions.assertThat;

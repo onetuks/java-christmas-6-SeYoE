@@ -1,4 +1,4 @@
-package christmas.event.handler;
+package christmas.benefit.handler;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -9,13 +9,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class NormalDayEventHandlerTest {
+class StarDayEventHandlerTest {
 
-    private NormalDayEventHandler eventHandler;
+    private StarDayEventHandler eventHandler;
 
     @BeforeEach
     void setUp() {
-        eventHandler = new NormalDayEventHandler();
+        eventHandler = new StarDayEventHandler();
     }
 
     @Test
@@ -45,7 +45,7 @@ class NormalDayEventHandlerTest {
     }
 
     @Test
-    @DisplayName("방문 날짜가 평일이 아니라면 이벤트 적용된다.")
+    @DisplayName("방문 날짜가 별 있는 날이 아니라면 이벤트 적용되지 않는다.")
     void supportVisitDate_NotNormalDay_False() {
         // Given
         final VisitDate visitDate = new VisitDate("2");
@@ -58,7 +58,7 @@ class NormalDayEventHandlerTest {
     }
 
     @Test
-    @DisplayName("방문 날짜가 평일이면 이벤트 적용된다.")
+    @DisplayName("방문 날짜가 별 있는 날이면 이벤트 적용된다.")
     void supportVisitDate_NormalDay_True() {
         // Given
         final VisitDate visitDate = new VisitDate("3");
@@ -71,10 +71,10 @@ class NormalDayEventHandlerTest {
     }
 
     @Test
-    @DisplayName("방문 날짜가 평일이고, 총주문 금액이 만 원 이상이면 이벤트 적용된다.")
+    @DisplayName("방문 날짜가 별 있는 날이고, 총주문 금액이 만 원 이상이면 이벤트 적용된다.")
     void supports_BeforeChristmasAndGreaterThanMinimumPrice_True() {
         // Given
-        final VisitDate visitDate = new VisitDate("4");
+        final VisitDate visitDate = new VisitDate("3");
         final OrderHistory orderHistory = new OrderHistory("아이스크림-3, 초코케이크-1");
 
         final Order order = new Order(visitDate, orderHistory);
@@ -87,26 +87,10 @@ class NormalDayEventHandlerTest {
     }
 
     @Test
-    @DisplayName("이벤트 적용 시 디저트 메뉴가 없다면 할인된 금액 없다.")
-    void apply_DesertNotInOrder_NotDiscount() {
+    @DisplayName("이벤트 적용 시 할인 금액을 구한다.")
+    void apply_ApplicableOrderAndVisitDate_Discount() {
         // Given
-        final VisitDate visitDate = new VisitDate("4");
-        final OrderHistory orderHistory = new OrderHistory("티본스테이크-1");
-
-        final Order order = new Order(visitDate, orderHistory);
-
-        // When
-        final int result = eventHandler.apply(order);
-
-        // Then
-        assertThat(result).isZero();
-    }
-
-    @Test
-    @DisplayName("이벤트 적용 시 디저트 메뉴 1개 당 2,023원 할인 된다.")
-    void apply_DesertInOrder_Discount() {
-        // Given
-        final VisitDate visitDate = new VisitDate("4");
+        final VisitDate visitDate = new VisitDate("3");
         final OrderHistory orderHistory = new OrderHistory("아이스크림-3, 초코케이크-1");
 
         final Order order = new Order(visitDate, orderHistory);
@@ -115,7 +99,7 @@ class NormalDayEventHandlerTest {
         final int result = eventHandler.apply(order);
 
         // Then
-        assertThat(result).isEqualTo(-2_023 * 4);
+        assertThat(result).isEqualTo(-1_000);
     }
 
 }

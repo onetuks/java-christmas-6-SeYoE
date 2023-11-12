@@ -1,6 +1,6 @@
 package christmas.io;
 
-import christmas.event.EventBenefit;
+import christmas.benefit.EventBenefit;
 import christmas.order.OrderHistory;
 import christmas.order.VisitDate;
 import christmas.result.EventResult;

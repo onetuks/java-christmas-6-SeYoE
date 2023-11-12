@@ -1,10 +1,10 @@
-package christmas.event;
+package christmas.benefit;
 
-import christmas.event.handler.DdayEventHandler;
-import christmas.event.handler.GiveAwayEventHandler;
-import christmas.event.handler.NormalDayEventHandler;
-import christmas.event.handler.StarDayEventHandler;
-import christmas.event.handler.WeekEndDayEventHandler;
+import christmas.benefit.handler.DdayEventHandler;
+import christmas.benefit.handler.GiveAwayEventHandler;
+import christmas.benefit.handler.NormalDayEventHandler;
+import christmas.benefit.handler.StarDayEventHandler;
+import christmas.benefit.handler.WeekEndDayEventHandler;
 import christmas.order.Order;
 import java.util.Arrays;
 import java.util.Map;

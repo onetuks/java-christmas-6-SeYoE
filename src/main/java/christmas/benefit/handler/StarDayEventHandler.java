@@ -1,6 +1,6 @@
-package christmas.event.handler;
+package christmas.benefit.handler;
 
-import christmas.event.EventHandler;
+import christmas.benefit.EventHandler;
 import christmas.order.Order;
 import christmas.order.OrderHistory;
 import christmas.order.VisitDate;
