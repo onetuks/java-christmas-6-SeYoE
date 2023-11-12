@@ -84,8 +84,8 @@ class DdayEventHandlerTest {
     }
 
     @Test
-    @DisplayName("이벤트 적용 시 할인 금액을 구한다.")
-    void apply_OrderAndVisitDate_DiscountPrice() {
+    @DisplayName("이벤트 적용 시 천원 이상의 할인 금액만큼 할인된다.")
+    void apply_ApplicableOrderAndVisitDate_DiscountMoreThan1K() {
         // Given
         final VisitDate visitDate = new VisitDate("4");
         final Order order = new Order("타파스-3, 제로콜라-1");

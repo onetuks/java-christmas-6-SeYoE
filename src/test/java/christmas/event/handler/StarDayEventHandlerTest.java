@@ -85,7 +85,7 @@ class StarDayEventHandlerTest {
 
     @Test
     @DisplayName("이벤트 적용 시 할인 금액을 구한다.")
-    void apply_OrderAndVisitDate_DiscountPrice() {
+    void apply_ApplicableOrderAndVisitDate_Discount() {
         // Given
         final VisitDate visitDate = new VisitDate("3");
         final Order order = new Order("아이스크림-3, 초코케이크-1");

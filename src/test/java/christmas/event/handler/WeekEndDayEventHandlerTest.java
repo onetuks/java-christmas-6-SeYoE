@@ -84,9 +84,24 @@ class WeekEndDayEventHandlerTest {
         assertThat(result).isTrue();
     }
 
+
     @Test
-    @DisplayName("이벤트 적용 시 할인 금액을 구한다.")
-    void apply_OrderAndVisitDate_DiscountPrice() {
+    @DisplayName("이벤트 적용 시 메인 메뉴가 없다면 할인된 금액 없다.")
+    void apply_MainMenuNotInOrder_NotDiscount() {
+        // Given
+        final VisitDate visitDate = new VisitDate("4");
+        final Order order = new Order("아이스크림-10");
+
+        // When
+        final int result = eventHandler.apply(order, visitDate);
+
+        // Then
+        assertThat(result).isZero();
+    }
+
+    @Test
+    @DisplayName("이벤트 적용 시 메인 메뉴 1개 당 2,023원 할인된다.")
+    void apply_MainMenuInOrder_Discount() {
         // Given
         final VisitDate visitDate = new VisitDate("4");
         final Order order = new Order("티본스테이크-3, 초코케이크-1");
@@ -95,7 +110,7 @@ class WeekEndDayEventHandlerTest {
         final int result = eventHandler.apply(order, visitDate);
 
         // Then
-        assertThat(result).isGreaterThan(1_000);
+        assertThat(result).isEqualTo(2_023 * 3);
     }
 
 }

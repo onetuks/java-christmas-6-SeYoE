@@ -1,5 +1,6 @@
 package christmas.event.handler;
 
+import static christmas.order.Menu.CHAMPAGNE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.order.Order;
@@ -71,8 +72,8 @@ class GiveAwayEventHandlerTest {
     }
 
     @Test
-    @DisplayName("이벤트 적용 시 할인 금액을 구한다.")
-    void apply_OrderAndVisitDate_DiscountPrice() {
+    @DisplayName("이벤트 적용 시 샴페인 가격만큼 할인된다.")
+    void apply_ApplicableOrderAndVisitDate_DiscountChampagnePrice() {
         // Given
         final VisitDate visitDate = new VisitDate("4");
         final Order order = new Order("아이스크림-3, 티본스테이크-10");
@@ -81,7 +82,7 @@ class GiveAwayEventHandlerTest {
         final int result = eventHandler.apply(order, visitDate);
 
         // Then
-        assertThat(result).isGreaterThan(1_000);
+        assertThat(result).isEqualTo(CHAMPAGNE.getMenuPrice());
     }
 
 }

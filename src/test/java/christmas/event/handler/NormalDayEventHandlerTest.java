@@ -7,6 +7,7 @@ import christmas.order.VisitDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.internal.matchers.Or;
 
 class NormalDayEventHandlerTest {
 
@@ -84,8 +85,22 @@ class NormalDayEventHandlerTest {
     }
 
     @Test
-    @DisplayName("이벤트 적용 시 할인 금액을 구한다.")
-    void apply_OrderAndVisitDate_DiscountPrice() {
+    @DisplayName("이벤트 적용 시 디저트 메뉴가 없다면 할인된 금액 없다.")
+    void apply_DesertNotInOrder_NotDiscount() {
+        // Given
+        final VisitDate visitDate = new VisitDate("4");
+        final Order order = new Order("티본스테이크-1");
+
+        // When
+        final int result = eventHandler.apply(order, visitDate);
+
+        // Then
+        assertThat(result).isZero();
+    }
+
+    @Test
+    @DisplayName("이벤트 적용 시 디저트 메뉴 1개 당 2,023원 할인 된다.")
+    void apply_DesertInOrder_Discount() {
         // Given
         final VisitDate visitDate = new VisitDate("4");
         final Order order = new Order("아이스크림-3, 초코케이크-1");
@@ -94,7 +109,7 @@ class NormalDayEventHandlerTest {
         final int result = eventHandler.apply(order, visitDate);
 
         // Then
-        assertThat(result).isGreaterThan(1_000);
+        assertThat(result).isEqualTo(2_023 * 4);
     }
 
 }
