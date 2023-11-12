@@ -19,7 +19,7 @@ class DecemberEventTest {
         final Order order = new Order("초코케이크-2, 티본스테이크-3, 제로콜라-3");
 
         // When
-        Map<String, Integer> result = DecemberEvent.applyEvents(order, visitDate);
+        Map<DecemberEvent, Integer> result = DecemberEvent.applyEvents(order, visitDate);
 
         // Then
         assertThat(result.keySet()).hasSize(4);
@@ -33,7 +33,7 @@ class DecemberEventTest {
         final Order order = new Order("아이스크림-1");
 
         // When
-        Map<String, Integer> result = DecemberEvent.applyEvents(order, visitDate);
+        Map<DecemberEvent, Integer> result = DecemberEvent.applyEvents(order, visitDate);
 
         // Then
         assertThat(result.keySet()).isEmpty();

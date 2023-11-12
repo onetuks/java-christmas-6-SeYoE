@@ -1,5 +1,6 @@
 package christmas.io;
 
+import christmas.event.EventBenefit;
 import christmas.order.Order;
 import christmas.order.VisitDate;
 import java.text.DecimalFormat;
@@ -49,4 +50,8 @@ public class OutputView {
         System.out.println(totalPrice);
     }
 
+    public void outputGiveAwayMenu(final EventBenefit eventBenefit) {
+        System.out.println(GIVEAWAY_MENU_TITLE);
+        System.out.println(eventBenefit.getGiveAwayMenu());
+    }
 }

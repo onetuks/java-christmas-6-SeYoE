@@ -1,9 +1,12 @@
 package christmas;
 
+import christmas.event.DecemberEvent;
+import christmas.event.EventBenefit;
 import christmas.io.InputView;
 import christmas.io.OutputView;
 import christmas.order.Order;
 import christmas.order.VisitDate;
+import java.util.Map;
 
 public class EventPlanner {
 
@@ -26,5 +29,9 @@ public class EventPlanner {
         outputView.outputOrderMenu(order);
 
         outputView.outputTotalPrice(order);
+
+        EventBenefit eventBenefit = new EventBenefit(order, visitDate);
+
+        outputView.outputGiveAwayMenu(eventBenefit);
     }
 }

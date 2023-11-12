@@ -24,7 +24,7 @@ public enum Menu {
 
     ZERO_COKE(BEVERAGE, "제로콜라", 3_000),
     RED_WINE(BEVERAGE, "레드와인", 60_000),
-    CHAMPAGNE(BEVERAGE, "샹페인", 25_000);
+    CHAMPAGNE(BEVERAGE, "샴페인", 25_000);
 
     private final MenuType menuType;
     private final String menuName;

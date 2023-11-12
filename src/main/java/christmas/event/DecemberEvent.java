@@ -26,16 +26,19 @@ public enum DecemberEvent {
         this.eventHandler = eventHandler;
     }
 
-    public static Map<String, Integer> applyEvents(final Order order, final VisitDate visitDate) {
+    public static Map<DecemberEvent, Integer> applyEvents(final Order order, final VisitDate visitDate) {
         return Arrays.stream(DecemberEvent.values())
                 .filter(decemberEvent -> decemberEvent.eventHandler
                         .supports(order, visitDate))
                 .collect(Collectors.toMap(
-                        decemberEvent -> decemberEvent.eventName,
+                        decemberEvent -> decemberEvent,
                         decemberEvent -> decemberEvent.eventHandler
                                 .apply(order, visitDate)
                 ));
     }
 
+    public String getEventName() {
+        return eventName;
+    }
 }
 
